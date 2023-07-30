@@ -78,10 +78,10 @@ app.delete('/questionList/:email', async (req, res) => {
     }
 });
 mongoose.
-connect('mongodb+srv://admin:amin@cluster0.qxlbhwk.mongodb.net/QuestionList?retryWrites=true&w=majority')
+connect(process.env.MONGO_URI||'mongodb+srv://admin:amin@cluster0.qxlbhwk.mongodb.net/QuestionList?retryWrites=true&w=majority')
 .then(()=>{
     console.log('connected to MongoDB')
-    app.listen(3000,()=>{
+    app.listen(process.env.PORT||3000,()=>{
     console.log('App is running on port 3000')
     });
 
